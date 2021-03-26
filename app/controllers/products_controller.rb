@@ -14,4 +14,5 @@ class ProductsController < ApplicationController
   def message_params
     params.require(:product).permit(:image).merge(user_id: current_user.id)
   end
+
 end

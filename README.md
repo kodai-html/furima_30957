@@ -1,6 +1,6 @@
 # テーブル設計
 
-## users テーブル
+## Users テーブル
 
 | Column     | Type   | Options     |
 | ---------- | ------ | ----------- |
@@ -15,10 +15,9 @@
 
 ### Association
 
-- has_many :products
-- has_many :comments
+- has_many :items
 
-## products テーブル
+## Items テーブル
 
 | Column      | Type    | Options     |
 | ----------- | ------- | ----------- |
@@ -30,28 +29,26 @@
 | area_id     | integer | null: false |
 | date_id     | integer | null: false |
 | price       | integer | null: false |
-| fee         | integer ||
-| profit      | integer ||
+| fee         | integer | null: false |
+| profit      | integer | null: false |
 
 ### Association
 
-- belongs_to :users
-- has_one :purchases
+- belongs_to :user
+- has_one :order
 
-## address
-
-## purchases テーブル
+## orders テーブル
 
 | Column   | Type      | Options           |
 | -------- | --------- | ----------------- |
-| product  | reference | foreign_key: true |
+| item     | reference | foreign_key: true |
 | buyer    | reference | foreign_key: true |
 
 ### Association
 
 - has_one :address
-- belongs_to :products
-- belongs_to :users
+- belongs_to :item
+- belongs_to :user
 
 ## Addresses テーブル
 
@@ -66,4 +63,4 @@
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :order
